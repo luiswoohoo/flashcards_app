@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 import Stack from './components/Stack'
-import styled from 'styled-components'
 import GlobalStyles from './GlobalStyles'
-
-import './App.css'
 
 function App() {
     const defaultStack = {
