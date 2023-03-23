@@ -10,22 +10,21 @@ function Card({ studyMode, cardID, isFlippedToFront, front, back, handleChange, 
                     <EditMode>
                         <p>Card ID: {cardID}</p>
                         <p>Current Facing Side: {isFlippedToFront ? 'Front' : 'Back'}</p>
+                        <br></br>
                         <p>Card Front:</p>
-                        <textarea
+                        <TextArea
                             name="front"
-                            cols={20}
                             rows={5}
                             value={front}
                             onChange={handleChange}
-                        ></textarea>
+                        ></TextArea>
                         <p>Card Back:</p>
-                        <textarea
+                        <TextArea
                             name="back"
-                            cols={20}
                             rows={5}
                             value={back}
                             onChange={handleChange}
-                        ></textarea>
+                        ></TextArea>
                     </EditMode>
                 </CardInfo>
             )}
@@ -52,27 +51,37 @@ const CardInfo = styled.div`
     width: 90%;
     height: 100%;
     margin: auto;
-    border: 1px purple solid;
+    border: 2px whitesmoke solid;
+    border-radius: 8px;
+    background-color: #fbfbfb;
+    color: #212427;
+    font-family: 'Open Sans', sans-serif;
 `
 
 const EditMode = styled.div`
     padding: 4px;
-    border: 1px green solid;
+`
+
+const TextArea = styled.textarea`
+    resize: none;
+    width: 100%;
 `
 
 const StudyMode = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px pink solid;
+    text-align: center;
 `
 
 const StudyModeFront = styled.p`
-    font-size: 42px;
+    font-size: 4rem;
+    font-weight: 700;
 `
 
 const StudyModeBack = styled.p`
-    font-size: 32px;
+    font-size: 4rem;
+    font-weight: 400;
 `
 
 export default Card

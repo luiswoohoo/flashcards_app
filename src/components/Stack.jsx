@@ -174,10 +174,15 @@ function Stack({ stackID, stackName, cards, setStackOfCards }) {
 const StackWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    width: 375px;
-    height: 667px;
-    border: 1px red solid;
-    border-radius: 8px;
+    /* justify-content: center; */
+    /* width: 375px;
+    height: 667px; */
+    width: 100dvw;
+    max-width: 500px;
+    height: 100dvh;
+    max-height: 1000px;
+    /* border: 1px red solid;
+    border-radius: 8px; */
 `
 
 const ChangeModeButton = styled.button`

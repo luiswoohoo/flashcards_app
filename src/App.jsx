@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 import Stack from './components/Stack'
+import styled from 'styled-components'
 import GlobalStyles from './GlobalStyles'
 
 function App() {
@@ -25,7 +26,7 @@ function App() {
     }, [stackOfCards])
 
     return (
-        <>
+        <Wrapper>
             {/* Search local storage for existing sets of cards. If cards exist, display them. Otherwise state that there are no cards. */}
             {!stackOfCards && 'Create a new stack of cards'}
             {stackOfCards && (
@@ -38,8 +39,14 @@ function App() {
             )}
 
             <GlobalStyles />
-        </>
+        </Wrapper>
     )
 }
+
+const Wrapper = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`
 
 export default App
