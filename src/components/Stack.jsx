@@ -80,8 +80,6 @@ function Stack({ stackID, stackName, cards, setStackOfCards }) {
                 }),
             }
         })
-        console.log('clicked flip')
-        console.log(cards[0].isFlippedToFront)
     }
 
     function emptyStackChecker(stackOfCards) {
@@ -92,8 +90,6 @@ function Stack({ stackID, stackName, cards, setStackOfCards }) {
 
     function handleChange(e) {
         const { name, value } = e.target
-        console.log(name)
-        console.log(value)
 
         setStackOfCards((currentStack) => {
             return {
@@ -152,12 +148,12 @@ function Stack({ stackID, stackName, cards, setStackOfCards }) {
                     ></Card>
 
                     <CardNav>
-                        <button onClick={prevCard} disabled={isStackEmpty}>
+                        <CardNavButton onClick={prevCard} disabled={isStackEmpty}>
                             Back
-                        </button>
-                        <button onClick={flipCard} disabled={isStackEmpty}>
+                        </CardNavButton>
+                        <CardNavButton onClick={flipCard} disabled={isStackEmpty}>
                             Flip
-                        </button>
+                        </CardNavButton>
                         {!studyMode && (
                             <>
                                 <button disabled={isStackEmpty}>All Front</button>
@@ -165,9 +161,9 @@ function Stack({ stackID, stackName, cards, setStackOfCards }) {
                             </>
                         )}
 
-                        <button onClick={nextCard} disabled={isStackEmpty}>
+                        <CardNavButton onClick={nextCard} disabled={isStackEmpty}>
                             Next
-                        </button>
+                        </CardNavButton>
                     </CardNav>
                 </>
             )}
@@ -184,9 +180,26 @@ const StackWrapper = styled.div`
     max-height: 1000px;
 `
 
-const ChangeModeButton = styled.button`
+const Button = styled.button`
+    border: none;
+    color: #212427;
+    font-family: 'Open Sans', sans-serif;
+
+    background-color: whitesmoke;
+
+    border-radius: 8px;
+`
+
+const CardNavButton = styled(Button)`
+    width: 3rem;
+    height: 3rem;
+    padding: 4px;
+`
+
+const ChangeModeButton = styled(Button)`
+    width: 40%;
     margin: 4px auto;
-    width: 50%;
+    padding: 4px;
 `
 
 const StackNav = styled.div`

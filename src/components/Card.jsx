@@ -15,7 +15,7 @@ function Card({ studyMode, cardID, isFlippedToFront, front, back, handleChange, 
                         <TextArea
                             name="front"
                             rows={4}
-                            maxLength={80}
+                            maxLength={100}
                             placeholder={'Write something here...'}
                             value={front}
                             onChange={handleChange}
@@ -25,7 +25,7 @@ function Card({ studyMode, cardID, isFlippedToFront, front, back, handleChange, 
                         <TextArea
                             name="back"
                             rows={4}
-                            maxLength={80}
+                            maxLength={100}
                             placeholder={'Write something here...'}
                             value={back}
                             onChange={handleChange}
@@ -33,18 +33,6 @@ function Card({ studyMode, cardID, isFlippedToFront, front, back, handleChange, 
                     </EditCard>
                 </Wrapper>
             )}
-
-            {/* {studyMode && (
-                <CardWrapper onClick={flipCard}>
-                    <StudyCard>
-                        {isFlippedToFront ? (
-                            <StudyCardFront>{`${front}`}</StudyCardFront>
-                        ) : (
-                            <StudyCardBack>{`${back}`}</StudyCardBack>
-                        )}
-                    </StudyCard>
-                </CardWrapper>
-            )} */}
 
             {studyMode && (
                 <Wrapper>
@@ -60,20 +48,9 @@ function Card({ studyMode, cardID, isFlippedToFront, front, back, handleChange, 
 }
 
 const Wrapper = styled.div`
-    /* display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center; */
     width: 90%;
     height: 100%;
     margin: auto;
-    /* border: 2px whitesmoke solid;
-    border-radius: 8px;
-    background-color: #fbfbfb;
-    color: #212427;
-    font-family: 'Open Sans', sans-serif; */
-
-    /* border: 2px solid green; */
 
     /* Card Flip Effect */
     perspective: 1000px;
@@ -90,7 +67,7 @@ const CardStyling = css`
 
     border: 2px whitesmoke solid;
     border-radius: 8px;
-    /* background-color: #fbfbfb; */
+
     color: #212427;
     font-family: 'Open Sans', sans-serif;
 `
@@ -100,9 +77,7 @@ const EditCard = styled.div`
 
     gap: 1rem;
 
-    /* padding: 4px; */
-
-    border-color: red;
+    border-color: deeppink;
 `
 
 const TextArea = styled.textarea`
@@ -129,6 +104,7 @@ const StudyCard = styled.div`
 const StudyCardStyling = css`
     height: 100%;
     width: 100%;
+    padding: 8px;
 
     display: flex;
     justify-content: center;
