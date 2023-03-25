@@ -114,12 +114,12 @@ function Stack({ stackID, stackName, cards, setStackOfCards }) {
             </ChangeModeButton>
             {!studyMode && (
                 <StackNav>
-                    <button onClick={newCard}>New Card</button>
-                    <button onClick={deleteCard} disabled={isStackEmpty}>
+                    <CreateCardButton onClick={newCard}>New Card</CreateCardButton>
+                    <DeleteCardButton onClick={deleteCard} disabled={isStackEmpty}>
                         Delete Card
-                    </button>
-                    <button>Import</button>
-                    <button>Export</button>
+                    </DeleteCardButton>
+                    {/* <button>Import</button>
+                    <button>Export</button> */}
                 </StackNav>
             )}
 
@@ -154,12 +154,12 @@ function Stack({ stackID, stackName, cards, setStackOfCards }) {
                         <CardNavButton onClick={flipCard} disabled={isStackEmpty}>
                             Flip
                         </CardNavButton>
-                        {!studyMode && (
+                        {/* {!studyMode && (
                             <>
                                 <button disabled={isStackEmpty}>All Front</button>
                                 <button disabled={isStackEmpty}>All Back</button>
                             </>
-                        )}
+                        )} */}
 
                         <CardNavButton onClick={nextCard} disabled={isStackEmpty}>
                             Next
@@ -190,6 +190,19 @@ const Button = styled.button`
     border-radius: 8px;
 `
 
+const StackNavButton = styled(Button)`
+    width: 8rem;
+    padding: 4px;
+`
+
+const CreateCardButton = styled(StackNavButton)`
+    border: 1px solid green;
+`
+
+const DeleteCardButton = styled(StackNavButton)`
+    border: 1px solid red;
+`
+
 const CardNavButton = styled(Button)`
     width: 3rem;
     height: 3rem;
@@ -197,7 +210,7 @@ const CardNavButton = styled(Button)`
 `
 
 const ChangeModeButton = styled(Button)`
-    width: 40%;
+    width: 16rem;
     margin: 4px auto;
     padding: 4px;
 `
