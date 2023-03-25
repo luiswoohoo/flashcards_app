@@ -9,9 +9,25 @@ function App() {
         id: crypto.randomUUID(),
         name: 'Default Stack',
         cards: [
-            { id: 1, isFlippedToFront: true, front: 'Front 1', back: 'Back 1' },
-            { id: 2, isFlippedToFront: false, front: 'Front 2', back: 'Back 2' },
-            { id: 3, isFlippedToFront: false, front: 'Front 3', back: 'Back 3' },
+            {
+                id: 1,
+                isFlippedToFront: true,
+                front: 'Tap the card to flip it',
+                back: '🥳 Tap Next or Back to see other cards',
+            },
+            {
+                id: 2,
+                isFlippedToFront: true,
+                front: 'To edit your cards...',
+                back: 'Tap the button above ☝🏽',
+            },
+            { id: 3, isFlippedToFront: true, front: '猫', back: '🐈' },
+            {
+                id: 4,
+                isFlippedToFront: true,
+                front: "What do you call cheese that isn't yours?",
+                back: 'Nacho Cheese',
+            },
         ],
     }
 

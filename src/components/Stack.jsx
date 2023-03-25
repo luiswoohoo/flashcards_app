@@ -5,14 +5,14 @@ import styled from 'styled-components'
 
 function Stack({ stackID, stackName, cards, setStackOfCards }) {
     const [isStackEmpty, setIsStackEmpty] = useState(emptyStackChecker(cards))
-    const [studyMode, setStudyMode] = useState(false)
+    const [studyMode, setStudyMode] = useState(true)
 
     function newCard() {
         const newCard = {
             id: crypto.randomUUID(),
             isFlippedToFront: true,
-            front: 'New Front',
-            back: 'New Back',
+            front: '',
+            back: '',
         }
 
         setStackOfCards((currentStack) => {
@@ -80,6 +80,8 @@ function Stack({ stackID, stackName, cards, setStackOfCards }) {
                 }),
             }
         })
+        console.log('clicked flip')
+        console.log(cards[0].isFlippedToFront)
     }
 
     function emptyStackChecker(stackOfCards) {
@@ -120,6 +122,8 @@ function Stack({ stackID, stackName, cards, setStackOfCards }) {
                     <button onClick={deleteCard} disabled={isStackEmpty}>
                         Delete Card
                     </button>
+                    <button>Import</button>
+                    <button>Export</button>
                 </StackNav>
             )}
 
@@ -174,15 +178,10 @@ function Stack({ stackID, stackName, cards, setStackOfCards }) {
 const StackWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
-    /* width: 375px;
-    height: 667px; */
     width: 100dvw;
-    max-width: 500px;
     height: 100dvh;
+    max-width: 500px;
     max-height: 1000px;
-    /* border: 1px red solid;
-    border-radius: 8px; */
 `
 
 const ChangeModeButton = styled.button`
@@ -214,7 +213,7 @@ const EmptyStack = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 42px;
+    font-size: 4rem;
 `
 
 export default Stack
