@@ -5,7 +5,7 @@ import styled from 'styled-components'
 
 function Stack({ stackID, stackName, cards, setStackOfCards }) {
     const [isStackEmpty, setIsStackEmpty] = useState(emptyStackChecker(cards))
-    const [studyMode, setStudyMode] = useState(true)
+    const [studyMode, setStudyMode] = useState(!emptyStackChecker(cards))
 
     function newCard() {
         const newCard = {
