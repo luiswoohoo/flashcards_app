@@ -168,8 +168,8 @@ const StackWrapper = styled.div`
     max-width: 500px;
     max-height: 1000px;
 
-    color: var(--theme-dark-primary);
     font-family: 'Open Sans', sans-serif;
+    color: var(--theme-dark-primary);
 `
 
 const Button = styled.button`
@@ -178,8 +178,6 @@ const Button = styled.button`
 
     padding: 0;
 
-    font-family: 'Open Sans', sans-serif;
-    color: var(--theme-dark-primary);
     text-align: center;
 `
 
