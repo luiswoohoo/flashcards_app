@@ -114,18 +114,12 @@ function Stack({ stackID, stackName, cards, setStackOfCards }) {
             </ChangeModeButton>
             {!studyMode && (
                 <StackNav>
-                    <CreateCardButton onClick={newCard}>New Card</CreateCardButton>
-                    <DeleteCardButton onClick={deleteCard} disabled={isStackEmpty}>
+                    <StackNavButton onClick={newCard}>New Card</StackNavButton>
+                    <StackNavButton onClick={deleteCard} disabled={isStackEmpty}>
                         Delete Card
-                    </DeleteCardButton>
-                    {/* <button>Import</button>
-                    <button>Export</button> */}
+                    </StackNavButton>
                 </StackNav>
             )}
-
-            {/* Stack info */}
-            {/* <p>Stack ID: {stackID}</p>
-            <p>Stack Name: {stackName}</p> */}
 
             {/* Card info */}
             {cards.length === 0 && (
@@ -151,15 +145,10 @@ function Stack({ stackID, stackName, cards, setStackOfCards }) {
                         <CardNavButton onClick={prevCard} disabled={isStackEmpty}>
                             Back
                         </CardNavButton>
+
                         <CardNavButton onClick={flipCard} disabled={isStackEmpty}>
                             Flip
                         </CardNavButton>
-                        {/* {!studyMode && (
-                            <>
-                                <button disabled={isStackEmpty}>All Front</button>
-                                <button disabled={isStackEmpty}>All Back</button>
-                            </>
-                        )} */}
 
                         <CardNavButton onClick={nextCard} disabled={isStackEmpty}>
                             Next
@@ -178,15 +167,15 @@ const StackWrapper = styled.div`
     height: 100dvh;
     max-width: 500px;
     max-height: 1000px;
+
+    background-color: var(--theme-dark-primary);
+
+    color: var(--theme-dark-primary);
+    font-family: 'Open Sans', sans-serif;
 `
 
 const Button = styled.button`
     border: none;
-    color: #212427;
-    font-family: 'Open Sans', sans-serif;
-
-    background-color: whitesmoke;
-
     border-radius: 8px;
 `
 
@@ -195,18 +184,9 @@ const StackNavButton = styled(Button)`
     padding: 4px;
 `
 
-const CreateCardButton = styled(StackNavButton)`
-    border: 1px solid green;
-`
-
-const DeleteCardButton = styled(StackNavButton)`
-    border: 1px solid red;
-`
-
 const CardNavButton = styled(Button)`
-    width: 3rem;
-    height: 3rem;
-    padding: 4px;
+    width: 2.5rem;
+    height: 2.5rem;
 `
 
 const ChangeModeButton = styled(Button)`
@@ -239,7 +219,10 @@ const EmptyStack = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 4rem;
+
+    text-align: center;
+    font-size: 3rem;
+    color: var(--theme-light-primary);
 `
 
 export default Stack
