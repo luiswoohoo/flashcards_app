@@ -4,42 +4,15 @@ import Stack from './components/Stack'
 import styled from 'styled-components'
 import GlobalStyles from './GlobalStyles'
 
-function App() {
-    const defaultStack = {
-        id: crypto.randomUUID(),
-        name: 'Default Stack',
-        cards: [
-            {
-                id: 1,
-                isCurrentCard: true,
-                isFlippedToFront: true,
-                front: 'Tap the card to flip it',
-                back: '🥳 Tap Next or Back to see other cards',
-            },
-            {
-                id: 2,
-                isCurrentCard: false,
-                isFlippedToFront: true,
-                front: 'To edit, create and delete your cards...',
-                back: 'Tap the button above ☝🏽',
-            },
-            { id: 3, isCurrentCard: false, isFlippedToFront: true, front: '猫', back: '🐈' },
-            {
-                id: 4,
-                isCurrentCard: false,
-                isFlippedToFront: true,
-                front: "What do you call cheese that isn't yours?",
-                back: 'Nacho Cheese',
-            },
-        ],
-    }
+import { DEFAULT_STACK } from './default_stack'
 
+function App() {
     // Check local storage for existing stack of cards
     // If none is found, create a 'Default' stack
     const [stackOfCards, setStackOfCards] = useState(() => {
         const cardsInLocalStorage = localStorage.getItem('cards')
         const parsedCards = JSON.parse(cardsInLocalStorage)
-        return parsedCards || defaultStack
+        return parsedCards || DEFAULT_STACK
     })
 
     useEffect(() => {
