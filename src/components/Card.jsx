@@ -123,7 +123,8 @@ const StudyCardStyling = css`
     justify-content: center;
     align-items: center;
 
-    background-color: var(--theme-light-primary);
+    /* background-color: var(--theme-light-primary); */
+    background-color: blue;
 
     font-size: 3rem;
 
