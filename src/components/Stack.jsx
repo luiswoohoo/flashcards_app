@@ -176,8 +176,11 @@ const Button = styled.button`
     border: none;
     border-radius: 8px;
 
-    color: var(--theme-dark-primary);
+    padding: 0;
+
     font-family: 'Open Sans', sans-serif;
+    color: var(--theme-dark-primary);
+    text-align: center;
 `
 
 const StackNavButton = styled(Button)`

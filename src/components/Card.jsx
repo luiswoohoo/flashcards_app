@@ -67,7 +67,7 @@ const CardStyling = css`
     align-items: center;
     justify-content: center;
 
-    border: 2px whitesmoke solid;
+    border: 2px var(--theme-light-primary) solid;
     border-radius: 8px;
     background-color: var(--theme-light-primary);
 `
