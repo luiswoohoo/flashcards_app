@@ -18,7 +18,7 @@ function App() {
             {
                 id: 2,
                 isFlippedToFront: true,
-                front: 'To edit your cards...',
+                front: 'To edit, add or delete your cards...',
                 back: 'Tap the button above ☝🏽',
             },
             { id: 3, isFlippedToFront: true, front: '猫', back: '🐈' },
