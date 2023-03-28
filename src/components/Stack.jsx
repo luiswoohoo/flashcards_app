@@ -168,8 +168,6 @@ const StackWrapper = styled.div`
     max-width: 500px;
     max-height: 1000px;
 
-    background-color: var(--theme-dark-primary);
-
     color: var(--theme-dark-primary);
     font-family: 'Open Sans', sans-serif;
 `
@@ -177,6 +175,9 @@ const StackWrapper = styled.div`
 const Button = styled.button`
     border: none;
     border-radius: 8px;
+
+    color: var(--theme-dark-primary);
+    font-family: 'Open Sans', sans-serif;
 `
 
 const StackNavButton = styled(Button)`
