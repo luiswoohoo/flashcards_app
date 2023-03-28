@@ -6,28 +6,51 @@ import styled from 'styled-components'
 function Stack({ stackID, cards, setStackOfCards }) {
     const [isStackEmpty, setIsStackEmpty] = useState(emptyStackChecker(cards))
     const [studyMode, setStudyMode] = useState(!emptyStackChecker(cards))
+    const [currentCardIndex, setCurrentCardIndex] = useState(
+        cards.findIndex((card) => card.isCurrentCard)
+    )
 
     function newCard() {
+        // Insert new card after the current top card
         const newCard = {
             id: crypto.randomUUID(),
+            isCurrentCard: true,
             isFlippedToFront: true,
             front: '',
             back: '',
         }
 
+        const updatedCards = [...cards]
+        updatedCards.splice(currentCardIndex + 1, 0, newCard)
+
         setStackOfCards((currentStack) => {
             return {
                 ...currentStack,
-                cards: [newCard, ...cards],
+                cards: updatedCards.map((card) => {
+                    return card.id === newCard.id ? { ...card } : { ...card, isCurrentCard: false }
+                }),
             }
         })
 
         setIsStackEmpty(false)
+        setCurrentCardIndex(updatedCards.findIndex((card) => card.id === newCard.id))
     }
 
     function deleteCard() {
-        // Remove the top card from the stack
-        const updatedCards = [...cards].slice(1)
+        // Delete current card and if next card exists
+        // set it to be the current card
+        const nextIndex = nextIndexFinder(currentCardIndex)
+
+        const updatedCards =
+            cards.length === 1
+                ? []
+                : [...cards]
+                      .map((card, index) => {
+                          return index === nextIndex
+                              ? { ...card, isCurrentCard: true }
+                              : { ...card }
+                      })
+                      .filter((card, index) => index !== currentCardIndex)
 
         setStackOfCards((currentStack) => {
             return {
@@ -37,14 +60,22 @@ function Stack({ stackID, cards, setStackOfCards }) {
         })
 
         setIsStackEmpty(emptyStackChecker(updatedCards))
+        setCurrentCardIndex(
+            updatedCards.length >= 1 ? updatedCards.findIndex((card) => card.isCurrentCard) : 0
+        )
     }
 
     function nextCard() {
-        // Remove the top card from the stack and
-        // add to the end of the stack
-        const updatedCards = [...cards]
-        const topCard = updatedCards.shift()
-        updatedCards.push(topCard)
+        // Set the isCurrentCard property to true
+        // for the next card in the stack
+        // and set isCurrentCard property to false for the rest
+
+        const nextIndex = nextIndexFinder(currentCardIndex)
+        const updatedCards = [...cards].map((card, index) => {
+            return index === nextIndex
+                ? { ...card, isCurrentCard: true }
+                : { ...card, isCurrentCard: false, isFlippedToFront: true }
+        })
 
         setStackOfCards((currentStack) => {
             return {
@@ -52,14 +83,21 @@ function Stack({ stackID, cards, setStackOfCards }) {
                 cards: updatedCards,
             }
         })
+
+        setCurrentCardIndex(updatedCards.findIndex((card) => card.isCurrentCard))
     }
 
     function prevCard() {
-        // Remove the bottom card from the stack and
-        // add to the beginning of the stack
-        const updatedCards = [...cards]
-        const bottomCard = updatedCards.pop()
-        updatedCards.unshift(bottomCard)
+        // Set the isCurrentCard property to true
+        // for the previous card in the stack
+        // and set isCurrentCard property to false for the rest
+
+        const prevIndex = prevIndexFinder(currentCardIndex)
+        const updatedCards = [...cards].map((card, index) => {
+            return index === prevIndex
+                ? { ...card, isCurrentCard: true }
+                : { ...card, isCurrentCard: false, isFlippedToFront: true }
+        })
 
         setStackOfCards((currentStack) => {
             return {
@@ -67,6 +105,8 @@ function Stack({ stackID, cards, setStackOfCards }) {
                 cards: updatedCards,
             }
         })
+
+        setCurrentCardIndex(updatedCards.findIndex((card) => card.isCurrentCard))
     }
 
     function flipCard() {
@@ -74,7 +114,7 @@ function Stack({ stackID, cards, setStackOfCards }) {
             return {
                 ...currentStack,
                 cards: [...cards].map((currentCard) => {
-                    return currentCard.id === cards[0].id
+                    return currentCard.id === cards[currentCardIndex].id
                         ? { ...currentCard, isFlippedToFront: !currentCard.isFlippedToFront }
                         : { ...currentCard }
                 }),
@@ -88,6 +128,24 @@ function Stack({ stackID, cards, setStackOfCards }) {
         return stackOfCards.length === 0
     }
 
+    function nextIndexFinder(index) {
+        if (index === cards.length - 1) {
+            return 0
+        } else {
+            return index + 1
+        }
+    }
+
+    function prevIndexFinder(index) {
+        if (cards.length === 1) {
+            return 0
+        } else if (index === 0) {
+            return cards.length - 1
+        } else {
+            return index - 1
+        }
+    }
+
     function handleChange(e) {
         const { name, value } = e.target
 
@@ -95,7 +153,7 @@ function Stack({ stackID, cards, setStackOfCards }) {
             return {
                 ...currentStack,
                 cards: [...cards].map((currentCard) => {
-                    return currentCard.id === cards[0].id
+                    return currentCard.id === cards[currentCardIndex].id
                         ? { ...currentCard, [name]: value }
                         : { ...currentCard }
                 }),
@@ -131,12 +189,12 @@ function Stack({ stackID, cards, setStackOfCards }) {
             {cards.length > 0 && (
                 <>
                     <Card
-                        key={cards[0].id}
+                        key={cards[currentCardIndex].id}
                         studyMode={studyMode}
-                        cardID={cards[0].id}
-                        isFlippedToFront={cards[0].isFlippedToFront}
-                        front={cards[0].front}
-                        back={cards[0].back}
+                        cardID={cards[currentCardIndex].id}
+                        isFlippedToFront={cards[currentCardIndex].isFlippedToFront}
+                        front={cards[currentCardIndex].front}
+                        back={cards[currentCardIndex].back}
                         handleChange={handleChange}
                         flipCard={flipCard}
                     ></Card>
@@ -147,7 +205,7 @@ function Stack({ stackID, cards, setStackOfCards }) {
                         </CardNavButton>
 
                         <CardNavButton onClick={flipCard} disabled={isStackEmpty}>
-                            Flip
+                            {`${currentCardIndex + 1}/${cards.length}`}
                         </CardNavButton>
 
                         <CardNavButton onClick={nextCard} disabled={isStackEmpty}>
