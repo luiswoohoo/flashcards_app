@@ -2,34 +2,35 @@ import React from 'react'
 
 import styled, { css } from 'styled-components'
 
-function Card({ studyMode, cardID, isFlippedToFront, front, back, handleChange, flipCard }) {
+function Card({ studyMode, isFlippedToFront, front, back, handleChange, flipCard }) {
     return (
         <>
             {!studyMode && (
                 <Wrapper>
                     <EditCard>
-                        <p>Card ID: {cardID}</p>
-                        <p>Current Facing Side: {isFlippedToFront ? 'Front' : 'Back'}</p>
+                        <div>
+                            <p>Card Front</p>
+                            <textarea
+                                name="front"
+                                rows={4}
+                                maxLength={100}
+                                placeholder={'Write something here...'}
+                                value={front}
+                                onChange={handleChange}
+                            ></textarea>
+                        </div>
 
-                        <p>Card Front</p>
-                        <TextArea
-                            name="front"
-                            rows={4}
-                            maxLength={100}
-                            placeholder={'Write something here...'}
-                            value={front}
-                            onChange={handleChange}
-                        ></TextArea>
-
-                        <p>Card Back</p>
-                        <TextArea
-                            name="back"
-                            rows={4}
-                            maxLength={100}
-                            placeholder={'Write something here...'}
-                            value={back}
-                            onChange={handleChange}
-                        ></TextArea>
+                        <div>
+                            <p>Card Back</p>
+                            <textarea
+                                name="back"
+                                rows={4}
+                                maxLength={100}
+                                placeholder={'Write something here...'}
+                                value={back}
+                                onChange={handleChange}
+                            ></textarea>
+                        </div>
                     </EditCard>
                 </Wrapper>
             )}
@@ -47,6 +48,7 @@ function Card({ studyMode, cardID, isFlippedToFront, front, back, handleChange, 
     )
 }
 
+// Styling for card in Edit Mode and Study Mode
 const Wrapper = styled.div`
     width: 90%;
     height: 100%;
@@ -65,26 +67,37 @@ const CardStyling = css`
     align-items: center;
     justify-content: center;
 
-    border: 2px whitesmoke solid;
+    border: 2px var(--theme-light-primary) solid;
     border-radius: 8px;
-
-    color: #212427;
-    font-family: 'Open Sans', sans-serif;
+    background-color: var(--theme-light-primary);
 `
 
+// Styling for card in Edit Mode
 const EditCard = styled.div`
     ${CardStyling}
 
-    gap: 1rem;
+    gap: 2rem;
 
     border-color: deeppink;
+
+    div {
+        width: 80%;
+    }
+
+    p {
+        text-align: center;
+    }
+
+    textarea {
+        resize: none;
+        width: 100%;
+        border: 1px var(--theme-dark-primary) solid;
+        border-radius: 8px;
+        padding: 4px;
+    }
 `
 
-const TextArea = styled.textarea`
-    resize: none;
-    width: 80%;
-`
-
+// Styling for card in Study Mode
 const StudyCard = styled.div`
     ${CardStyling}
     display: flex;
@@ -110,7 +123,7 @@ const StudyCardStyling = css`
     justify-content: center;
     align-items: center;
 
-    background-color: #fbfbfb;
+    background-color: var(--theme-light-primary);
 
     font-size: 3rem;
 

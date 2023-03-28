@@ -18,7 +18,7 @@ function App() {
             {
                 id: 2,
                 isFlippedToFront: true,
-                front: 'To edit your cards...',
+                front: 'To edit, add or delete your cards...',
                 back: 'Tap the button above ☝🏽',
             },
             { id: 3, isFlippedToFront: true, front: '猫', back: '🐈' },
@@ -43,7 +43,6 @@ function App() {
 
     return (
         <Wrapper>
-            {/* Search local storage for existing sets of cards. If cards exist, display them. Otherwise state that there are no cards. */}
             {!stackOfCards && 'Create a new stack of cards'}
             {stackOfCards && (
                 <Stack
@@ -63,6 +62,8 @@ const Wrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+
+    background-color: var(--theme-dark-primary);
 `
 
 export default App

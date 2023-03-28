@@ -60,5 +60,11 @@ p, h1, h2, h3, h4, h5, h6 {
 #root, #__next {
   isolation: isolate;
 }
+
+/* Theme Colors */
+:root {
+  --theme-dark-primary: #212427;
+  --theme-light-primary: #fbfbfb; 
+}
 `
 export default GlobalStyles
