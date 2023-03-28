@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import Card from './Card'
 import styled from 'styled-components'
 
-function Stack({ stackID, stackName, cards, setStackOfCards }) {
+function Stack({ stackID, cards, setStackOfCards }) {
     const [isStackEmpty, setIsStackEmpty] = useState(emptyStackChecker(cards))
     const [studyMode, setStudyMode] = useState(!emptyStackChecker(cards))
 

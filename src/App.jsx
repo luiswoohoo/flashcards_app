@@ -43,7 +43,6 @@ function App() {
 
     return (
         <Wrapper>
-            {/* Search local storage for existing sets of cards. If cards exist, display them. Otherwise state that there are no cards. */}
             {!stackOfCards && 'Create a new stack of cards'}
             {stackOfCards && (
                 <Stack
