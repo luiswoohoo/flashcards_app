@@ -69,7 +69,6 @@ const CardStyling = css`
 
     border: 2px var(--theme-light-primary) solid;
     border-radius: 8px;
-    background-color: var(--theme-light-primary);
 `
 
 // Styling for card in Edit Mode
@@ -78,6 +77,7 @@ const EditCard = styled.div`
 
     gap: 2rem;
 
+    background-color: var(--theme-light-primary);
     border-color: deeppink;
 
     div {
