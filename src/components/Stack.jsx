@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 
+import StackNav from './StackNav'
 import Card from './Card'
 import CardNav from './CardNav'
+
 import styled from 'styled-components'
 
 function Stack({ stackID, cards, setStackOfCards }) {
@@ -70,7 +72,6 @@ function Stack({ stackID, cards, setStackOfCards }) {
         // Set the isCurrentCard property to true
         // for the next card in the stack
         // and set isCurrentCard property to false for the rest
-
         const nextIndex = nextIndexFinder(currentCardIndex)
         const updatedCards = [...cards].map((card, index) => {
             return index === nextIndex
@@ -92,7 +93,6 @@ function Stack({ stackID, cards, setStackOfCards }) {
         // Set the isCurrentCard property to true
         // for the previous card in the stack
         // and set isCurrentCard property to false for the rest
-
         const prevIndex = prevIndexFinder(currentCardIndex)
         const updatedCards = [...cards].map((card, index) => {
             return index === prevIndex
@@ -147,7 +147,7 @@ function Stack({ stackID, cards, setStackOfCards }) {
         }
     }
 
-    function handleChange(e) {
+    function updateCardInfo(e) {
         const { name, value } = e.target
 
         setStackOfCards((currentStack) => {
@@ -172,15 +172,9 @@ function Stack({ stackID, cards, setStackOfCards }) {
                 {studyMode ? 'Enable Edit Mode' : 'Enable Study Mode'}
             </ChangeModeButton>
             {!studyMode && (
-                <StackNav>
-                    <StackNavButton onClick={newCard}>New Card</StackNavButton>
-                    <StackNavButton onClick={deleteCard} disabled={isStackEmpty}>
-                        Delete Card
-                    </StackNavButton>
-                </StackNav>
+                <StackNav newCard={newCard} deleteCard={deleteCard} isStackEmpty={isStackEmpty} />
             )}
 
-            {/* Card info */}
             {cards.length === 0 && (
                 <EmptyStack>
                     <p>Create some cards</p>
@@ -192,11 +186,10 @@ function Stack({ stackID, cards, setStackOfCards }) {
                     <Card
                         key={cards[currentCardIndex].id}
                         studyMode={studyMode}
-                        cardID={cards[currentCardIndex].id}
                         isFlippedToFront={cards[currentCardIndex].isFlippedToFront}
                         front={cards[currentCardIndex].front}
                         back={cards[currentCardIndex].back}
-                        handleChange={handleChange}
+                        updateCardInfo={updateCardInfo}
                         flipCard={flipCard}
                     ></Card>
 
@@ -233,24 +226,10 @@ const Button = styled.button`
     text-align: center;
 `
 
-const StackNavButton = styled(Button)`
-    width: 8rem;
-    padding: 4px;
-`
-
 const ChangeModeButton = styled(Button)`
     width: 16rem;
     margin: 4px auto;
     padding: 4px;
-`
-
-const StackNav = styled.div`
-    display: flex;
-    gap: 1rem;
-    justify-content: space-around;
-
-    margin: 4px;
-    margin-bottom: 10px;
 `
 
 const EmptyStack = styled.div`

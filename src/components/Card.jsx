@@ -2,7 +2,7 @@ import React from 'react'
 
 import styled, { css } from 'styled-components'
 
-function Card({ studyMode, isFlippedToFront, front, back, handleChange, flipCard }) {
+function Card({ studyMode, isFlippedToFront, front, back, updateCardInfo, flipCard }) {
     return (
         <>
             {!studyMode && (
@@ -16,7 +16,7 @@ function Card({ studyMode, isFlippedToFront, front, back, handleChange, flipCard
                                 maxLength={100}
                                 placeholder={'Write something here...'}
                                 value={front}
-                                onChange={handleChange}
+                                onChange={updateCardInfo}
                             ></textarea>
                         </div>
 
@@ -28,7 +28,7 @@ function Card({ studyMode, isFlippedToFront, front, back, handleChange, flipCard
                                 maxLength={100}
                                 placeholder={'Write something here...'}
                                 value={back}
-                                onChange={handleChange}
+                                onChange={updateCardInfo}
                             ></textarea>
                         </div>
                     </EditCard>
