@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 
 import Card from './Card'
 import styled from 'styled-components'
+import backButton from '../assets/UI/back.svg'
+import nextButton from '../assets/UI/next.svg'
 
 function Stack({ stackID, cards, setStackOfCards }) {
     const [isStackEmpty, setIsStackEmpty] = useState(emptyStackChecker(cards))
@@ -201,7 +203,7 @@ function Stack({ stackID, cards, setStackOfCards }) {
 
                     <CardNav>
                         <CardNavButton onClick={prevCard} disabled={isStackEmpty}>
-                            Back
+                            <img src={backButton} alt="Previous Card" />
                         </CardNavButton>
 
                         <CardNavButton onClick={flipCard} disabled={isStackEmpty}>
@@ -209,7 +211,7 @@ function Stack({ stackID, cards, setStackOfCards }) {
                         </CardNavButton>
 
                         <CardNavButton onClick={nextCard} disabled={isStackEmpty}>
-                            Next
+                            <img src={nextButton} alt="Next Card" />
                         </CardNavButton>
                     </CardNav>
                 </>
@@ -247,6 +249,11 @@ const StackNavButton = styled(Button)`
 const CardNavButton = styled(Button)`
     width: 2.5rem;
     height: 2.5rem;
+
+    img {
+        filter: invert(9%) sepia(18%) saturate(449%) hue-rotate(169deg) brightness(92%)
+            contrast(86%);
+    }
 `
 
 const ChangeModeButton = styled(Button)`
