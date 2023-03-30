@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
 
 import Card from './Card'
+import CardNav from './CardNav'
 import styled from 'styled-components'
-import backButton from '../assets/UI/back.svg'
-import nextButton from '../assets/UI/next.svg'
 
 function Stack({ stackID, cards, setStackOfCards }) {
     const [isStackEmpty, setIsStackEmpty] = useState(emptyStackChecker(cards))
@@ -201,19 +200,12 @@ function Stack({ stackID, cards, setStackOfCards }) {
                         flipCard={flipCard}
                     ></Card>
 
-                    <CardNav>
-                        <CardNavButton onClick={prevCard} disabled={isStackEmpty}>
-                            <img src={backButton} alt="Previous Card" />
-                        </CardNavButton>
-
-                        <CardNavButton onClick={flipCard} disabled={isStackEmpty}>
-                            {`${currentCardIndex + 1}/${cards.length}`}
-                        </CardNavButton>
-
-                        <CardNavButton onClick={nextCard} disabled={isStackEmpty}>
-                            <img src={nextButton} alt="Next Card" />
-                        </CardNavButton>
-                    </CardNav>
+                    <CardNav
+                        prevCard={prevCard}
+                        nextCard={nextCard}
+                        currentCardIndex={currentCardIndex}
+                        totalCards={cards.length}
+                    />
                 </>
             )}
         </StackWrapper>
@@ -246,16 +238,6 @@ const StackNavButton = styled(Button)`
     padding: 4px;
 `
 
-const CardNavButton = styled(Button)`
-    width: 2.5rem;
-    height: 2.5rem;
-
-    img {
-        filter: invert(9%) sepia(18%) saturate(449%) hue-rotate(169deg) brightness(92%)
-            contrast(86%);
-    }
-`
-
 const ChangeModeButton = styled(Button)`
     width: 16rem;
     margin: 4px auto;
@@ -269,15 +251,6 @@ const StackNav = styled.div`
 
     margin: 4px;
     margin-bottom: 10px;
-`
-
-const CardNav = styled.div`
-    display: flex;
-    gap: 1rem;
-    justify-content: space-around;
-
-    margin: 4px;
-    margin-top: 10px;
 `
 
 const EmptyStack = styled.div`
