@@ -2,20 +2,19 @@ import React from 'react'
 
 import styled from 'styled-components'
 
-import backButton from '../assets/UI/back.svg'
-import nextButton from '../assets/UI/next.svg'
+import { SVGBackArrow, SVGNextArrow } from './SVGIcons'
 
 function CardNav({ prevCard, nextCard, currentCardIndex, totalCards }) {
     return (
         <Wrapper>
             <CardNavButton onClick={prevCard}>
-                <img src={backButton} alt="Previous Card" />
+                <SVGBackArrow />
             </CardNavButton>
 
             <CardNavButton>{`${currentCardIndex + 1}/${totalCards}`}</CardNavButton>
 
             <CardNavButton onClick={nextCard}>
-                <img src={nextButton} alt="Next Card" />
+                <SVGNextArrow />
             </CardNavButton>
         </Wrapper>
     )
@@ -40,13 +39,12 @@ const Button = styled.button`
 `
 
 const CardNavButton = styled(Button)`
-    width: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.5rem;
     height: 2.5rem;
-
-    img {
-        filter: invert(9%) sepia(18%) saturate(449%) hue-rotate(169deg) brightness(92%)
-            contrast(86%);
-    }
+    padding: 8px;
 `
 
 export default CardNav
