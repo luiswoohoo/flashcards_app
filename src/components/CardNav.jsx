@@ -27,6 +27,8 @@ const Wrapper = styled.div`
 
     margin: 4px;
     margin-top: 10px;
+
+    color: var(--theme-dark-primary);
 `
 
 const Button = styled.button`
