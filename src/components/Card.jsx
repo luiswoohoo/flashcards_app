@@ -2,7 +2,7 @@ import React from 'react'
 
 import styled, { css } from 'styled-components'
 
-function Card({ studyMode, isFlippedToFront, front, back, updateCardInfo, flipCard }) {
+function Card({ studyMode, isFlippedToFront, front, back, updateCardInfo, flipCard, wiggle, resetWiggle }) {
     return (
         <>
             {!studyMode && (
@@ -37,7 +37,17 @@ function Card({ studyMode, isFlippedToFront, front, back, updateCardInfo, flipCa
 
             {studyMode && (
                 <Wrapper>
-                    <StudyCard onClick={flipCard} className={isFlippedToFront ? '' : 'flipped'}>
+                    <StudyCard
+                        onClick={flipCard}
+                        className={`${isFlippedToFront ? '' : 'flipped'} ${
+                            wiggle === 'wiggleNext'
+                                ? 'wiggleNext'
+                                : wiggle === 'wiggleBack'
+                                ? 'wiggleBack'
+                                : ''
+                        }`}
+                        onAnimationEnd={resetWiggle}
+                    >
                         <StudyCardFront>{`${front}`}</StudyCardFront>
 
                         <StudyCardBack>{`${back}`}</StudyCardBack>
@@ -111,6 +121,35 @@ const StudyCard = styled.div`
     transition: transform 500ms;
     &.flipped {
         transform: rotateY(180deg);
+    }
+
+    /* Card Wiggle Effect */
+    &.wiggleNext {
+        animation: wiggleN 100ms 2 ease-in-out;
+        animation-direction: alternate;
+    }
+
+    @keyframes wiggleN {
+        from {
+            transform: translateX(0%);
+        }
+        to {
+            transform: translateX(1%);
+        }
+    }
+
+    &.wiggleBack {
+        animation: wiggleB 100ms 2 ease-in-out;
+        animation-direction: alternate;
+    }
+
+    @keyframes wiggleB {
+        from {
+            transform: translateX(0%);
+        }
+        to {
+            transform: translateX(-1%);
+        }
     }
 `
 

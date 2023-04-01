@@ -12,6 +12,7 @@ function Stack({ stackID, cards, setStackOfCards }) {
     const [currentCardIndex, setCurrentCardIndex] = useState(
         cards.findIndex((card) => card.isCurrentCard)
     )
+    const [wiggle, setWiggle] = useState('')
 
     function newCard() {
         // Insert new card after the current top card
@@ -87,6 +88,7 @@ function Stack({ stackID, cards, setStackOfCards }) {
         })
 
         setCurrentCardIndex(updatedCards.findIndex((card) => card.isCurrentCard))
+        setWiggle('wiggleNext')
     }
 
     function prevCard() {
@@ -108,6 +110,7 @@ function Stack({ stackID, cards, setStackOfCards }) {
         })
 
         setCurrentCardIndex(updatedCards.findIndex((card) => card.isCurrentCard))
+        setWiggle('wiggleBack')
     }
 
     function flipCard() {
@@ -121,6 +124,10 @@ function Stack({ stackID, cards, setStackOfCards }) {
                 }),
             }
         })
+    }
+
+    function resetWiggle() {
+        setWiggle('')
     }
 
     function emptyStackChecker(stackOfCards) {
@@ -191,6 +198,9 @@ function Stack({ stackID, cards, setStackOfCards }) {
                         back={cards[currentCardIndex].back}
                         updateCardInfo={updateCardInfo}
                         flipCard={flipCard}
+                        wiggle={wiggle}
+                        resetWiggle={resetWiggle}
+                        
                     ></Card>
 
                     <CardNav
