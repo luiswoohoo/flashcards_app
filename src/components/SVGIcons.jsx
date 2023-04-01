@@ -11,6 +11,8 @@ function SVGBackArrow() {
             xmlns:xlink="http://www.w3.org/1999/xlink"
             viewBox="0 0 512 512"
             xml:space="preserve"
+            height="100%"
+            width="100%"
         >
             <path
                 d="M313.752,134.248c-8.331-8.331-21.839-8.331-30.17,0L176.915,240.915c-8.331,8.331-8.331,21.839,0,30.17l106.667,106.667
@@ -30,6 +32,8 @@ function SVGNextArrow() {
             xmlns:xlink="http://www.w3.org/1999/xlink"
             viewBox="0 0 512 512"
             xml:space="preserve"
+            height="100%"
+            width="100%"
         >
             <path
                 d="M228.418,134.248c-8.331-8.331-21.839-8.331-30.17,0c-8.331,8.331-8.331,21.839,0,30.17L289.83,256l-91.582,91.582
