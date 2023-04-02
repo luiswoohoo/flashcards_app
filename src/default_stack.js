@@ -7,7 +7,7 @@ export const DEFAULT_STACK = {
             isCurrentCard: true,
             isFlippedToFront: true,
             front: 'Tap the card to flip it',
-            back: '🥳 Tap Next or Back to see other cards',
+            back: '🥳 Tap the arrow buttons or swipe left or right to see other cards',
         },
         {
             id: 2,
