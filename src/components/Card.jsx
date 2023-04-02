@@ -1,8 +1,53 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import styled, { css } from 'styled-components'
 
-function Card({ studyMode, isFlippedToFront, front, back, updateCardInfo, flipCard, wiggle, resetWiggle }) {
+function Card({
+    studyMode,
+    isFlippedToFront,
+    front,
+    back,
+    updateCardInfo,
+    flipCard,
+    wiggle,
+    resetWiggle,
+    prevCard,
+    nextCard,
+}) {
+    const THRESHOLD_TIME = 250
+    const THRESHOLD_DISTANCE = 20
+    const [gestureStartInfo, setGestureStartInfo] = useState({})
+
+    function gestureStart(e) {
+        setGestureStartInfo(() => {
+            return {
+                t: new Date().getTime(),
+                x: e.clientX,
+            }
+        })
+    }
+
+    function gestureEnd(e) {
+        e.preventDefault()
+        if (e.pointerType !== 'mouse') {
+            const now = new Date().getTime()
+            const deltaTime = now - gestureStartInfo.t
+            const deltaX = e.clientX - gestureStartInfo.x
+
+            if (deltaTime > THRESHOLD_TIME) {
+                return
+            } else {
+                if (deltaX > THRESHOLD_DISTANCE) {
+                    nextCard()
+                } else if (-deltaX > THRESHOLD_DISTANCE) {
+                    prevCard()
+                } else {
+                    return
+                }
+            }
+        }
+    }
+
     return (
         <>
             {!studyMode && (
@@ -47,6 +92,10 @@ function Card({ studyMode, isFlippedToFront, front, back, updateCardInfo, flipCa
                                 : ''
                         }`}
                         onAnimationEnd={resetWiggle}
+                        onPointerDown={gestureStart}
+                        onPointerUp={gestureEnd}
+                        onPointerLeave={gestureEnd}
+                        onPointerCancel={gestureEnd}
                     >
                         <StudyCardFront>{`${front}`}</StudyCardFront>
 
@@ -114,6 +163,8 @@ const StudyCard = styled.div`
     align-items: center;
     justify-content: center;
     text-align: center;
+
+    /* pointer-events: none; */
 
     /* Card Flip Effect */
     position: relative;

@@ -200,7 +200,8 @@ function Stack({ stackID, cards, setStackOfCards }) {
                         flipCard={flipCard}
                         wiggle={wiggle}
                         resetWiggle={resetWiggle}
-                        
+                        prevCard={prevCard}
+                        nextCard={nextCard}
                     ></Card>
 
                     <CardNav
