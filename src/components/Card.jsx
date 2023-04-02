@@ -38,9 +38,9 @@ function Card({
                 return
             } else {
                 if (deltaX > THRESHOLD_DISTANCE) {
-                    nextCard()
-                } else if (-deltaX > THRESHOLD_DISTANCE) {
                     prevCard()
+                } else if (-deltaX > THRESHOLD_DISTANCE) {
+                    nextCard()
                 } else {
                     return
                 }
