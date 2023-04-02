@@ -164,7 +164,7 @@ const StudyCard = styled.div`
     justify-content: center;
     text-align: center;
 
-    /* pointer-events: none; */
+    touch-action: pinch-zoom;
 
     /* Card Flip Effect */
     position: relative;
