@@ -38,9 +38,11 @@ function Card({
                 return
             } else {
                 if (deltaX > THRESHOLD_DISTANCE) {
-                    nextCard()
-                } else if (-deltaX > THRESHOLD_DISTANCE) {
+                    // Swipe right
                     prevCard()
+                } else if (-deltaX > THRESHOLD_DISTANCE) {
+                    // Swipe left
+                    nextCard()
                 } else {
                     return
                 }
