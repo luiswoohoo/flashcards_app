@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 
+import MenuNav from './MenuNav'
 import StackNav from './StackNav'
 import Card from './Card'
 import CardNav from './CardNav'
@@ -175,9 +176,12 @@ function Stack({ stackID, cards, setStackOfCards }) {
 
     return (
         <StackWrapper key={stackID}>
-            <ChangeModeButton onClick={changeMode} disabled={isStackEmpty}>
-                {studyMode ? 'Enable Edit Mode' : 'Enable Study Mode'}
-            </ChangeModeButton>
+            <MenuNav
+                changeMode={changeMode}
+                isStackEmpty={isStackEmpty}
+                studyMode={studyMode}
+            ></MenuNav>
+
             {!studyMode && (
                 <StackNav newCard={newCard} deleteCard={deleteCard} isStackEmpty={isStackEmpty} />
             )}
@@ -226,21 +230,6 @@ const StackWrapper = styled.div`
 
     font-family: 'Open Sans', sans-serif;
     color: var(--theme-dark-primary);
-`
-
-const Button = styled.button`
-    border: none;
-    border-radius: 8px;
-
-    padding: 0;
-
-    text-align: center;
-`
-
-const ChangeModeButton = styled(Button)`
-    width: 16rem;
-    margin: 4px auto;
-    padding: 4px;
 `
 
 const EmptyStack = styled.div`
