@@ -5,14 +5,16 @@ import * as Styled from './Styles'
 
 import { SVGBackArrow, SVGNextArrow } from './SVGIcons'
 
-function CardNav({ prevCard, nextCard, currentCardIndex, totalCards }) {
+function CardNav({ prevCard, nextCard, flipCard, currentCardIndex, totalCards }) {
     return (
         <Wrapper>
             <CardNavButton onClick={prevCard}>
                 <SVGBackArrow />
             </CardNavButton>
 
-            <div>{`${currentCardIndex + 1}/${totalCards}`}</div>
+            <CardNavButton onClick={flipCard}>{`${
+                currentCardIndex + 1
+            }/${totalCards}`}</CardNavButton>
 
             <CardNavButton onClick={nextCard}>
                 <SVGNextArrow />
@@ -27,21 +29,6 @@ const Wrapper = styled.div`
     justify-content: space-around;
 
     color: var(--theme-dark-primary);
-
-    div {
-        height: 2.2rem;
-        width: 3rem;
-
-        border: none;
-        border-radius: 8px;
-
-        margin: 8px;
-        padding: 4px;
-
-        background: var(--theme-light-primary);
-
-        text-align: center;
-    }
 `
 
 const CardNavButton = styled(Styled.Button)`

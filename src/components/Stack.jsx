@@ -211,6 +211,7 @@ function Stack({ stackID, cards, setStackOfCards }) {
                     <CardNav
                         prevCard={prevCard}
                         nextCard={nextCard}
+                        flipCard={flipCard}
                         currentCardIndex={currentCardIndex}
                         totalCards={cards.length}
                     />
