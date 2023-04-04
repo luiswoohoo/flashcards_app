@@ -40,7 +40,7 @@ function Card({
 }
 
 // Styling for card in Edit Mode and Study Mode
-const Wrapper = styled.div`
+const Wrapper = styled.main`
     width: 90%;
     height: 100%;
     margin: auto;

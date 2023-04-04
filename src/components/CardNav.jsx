@@ -7,32 +7,24 @@ import { SVGBackArrow, SVGNextArrow } from './SVGIcons'
 
 function CardNav({ prevCard, nextCard, flipCard, currentCardIndex, totalCards }) {
     return (
-        <Wrapper>
+        <Styled.Nav>
             <CardNavButton onClick={prevCard}>
                 <SVGBackArrow />
             </CardNavButton>
 
             <CardNavButton onClick={flipCard}>{`${
                 currentCardIndex + 1
-            }/${totalCards}`}</CardNavButton>
+            } / ${totalCards}`}</CardNavButton>
 
             <CardNavButton onClick={nextCard}>
                 <SVGNextArrow />
             </CardNavButton>
-        </Wrapper>
+        </Styled.Nav>
     )
 }
 
-const Wrapper = styled.div`
-    display: flex;
-    gap: 1rem;
-    justify-content: space-around;
-
-    color: var(--theme-dark-primary);
-`
-
 const CardNavButton = styled(Styled.Button)`
-    width: 3.5rem;
+    min-width: 3.5rem;
 `
 
 export default CardNav

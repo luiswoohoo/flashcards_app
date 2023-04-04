@@ -5,24 +5,14 @@ import * as Styled from './Styles'
 
 function StackNav({ newCard, deleteCard, isStackEmpty }) {
     return (
-        <Wrapper>
+        <Styled.Nav>
             <StackNavButton onClick={newCard}>New Card</StackNavButton>
             <StackNavButton onClick={deleteCard} disabled={isStackEmpty}>
                 Delete Card
             </StackNavButton>
-        </Wrapper>
+        </Styled.Nav>
     )
 }
-
-const Wrapper = styled.div`
-    display: flex;
-    gap: 1rem;
-    justify-content: space-around;
-
-    margin-top: -4px;
-
-    color: var(--theme-dark-primary);
-`
 
 const StackNavButton = styled(Styled.Button)`
     width: 8rem;

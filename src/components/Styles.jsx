@@ -1,5 +1,13 @@
 import styled from 'styled-components'
 
+const Nav = styled.nav`
+    display: flex;
+    gap: 1rem;
+    justify-content: space-around;
+
+    color: var(--theme-dark-primary);
+`
+
 const Button = styled.button`
     height: 2.2rem;
 
@@ -10,4 +18,4 @@ const Button = styled.button`
     padding: 4px;
 `
 
-export { Button }
+export { Nav, Button }
