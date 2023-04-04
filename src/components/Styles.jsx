@@ -4,10 +4,10 @@ const Button = styled.button`
     border: none;
     border-radius: 8px;
 
-    margin: 4px;
+    margin: 8px;
     padding: 4px;
 
-    text-align: center;
+    height: 2.2rem;
 `
 
 export { Button }

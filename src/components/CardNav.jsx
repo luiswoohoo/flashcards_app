@@ -26,17 +26,11 @@ const Wrapper = styled.div`
     gap: 1rem;
     justify-content: space-around;
 
-    margin-top: 8px;
-
     color: var(--theme-dark-primary);
 `
 
 const CardNavButton = styled(Styled.Button)`
-    display: flex;
-    align-items: center;
-    justify-content: center;
     width: 3.5rem;
-    height: 2rem;
 `
 
 export default CardNav

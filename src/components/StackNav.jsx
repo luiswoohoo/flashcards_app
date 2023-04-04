@@ -19,7 +19,7 @@ const Wrapper = styled.div`
     gap: 1rem;
     justify-content: space-around;
 
-    margin-bottom: 8px;
+    margin-top: -4px;
 
     color: var(--theme-dark-primary);
 `
