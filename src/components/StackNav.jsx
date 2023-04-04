@@ -1,8 +1,9 @@
 import React from 'react'
 
 import styled from 'styled-components'
+import * as Styled from './Styles'
 
-function StackNav({newCard, deleteCard, isStackEmpty}) {
+function StackNav({ newCard, deleteCard, isStackEmpty }) {
     return (
         <Wrapper>
             <StackNavButton onClick={newCard}>New Card</StackNavButton>
@@ -18,24 +19,13 @@ const Wrapper = styled.div`
     gap: 1rem;
     justify-content: space-around;
 
-    margin: 4px;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 
     color: var(--theme-dark-primary);
 `
 
-const Button = styled.button`
-    border: none;
-    border-radius: 8px;
-
-    padding: 0;
-
-    text-align: center;
-`
-
-const StackNavButton = styled(Button)`
+const StackNavButton = styled(Styled.Button)`
     width: 8rem;
-    padding: 4px;
 `
 
 export default StackNav

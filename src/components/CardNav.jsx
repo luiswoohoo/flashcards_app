@@ -1,6 +1,7 @@
 import React from 'react'
 
 import styled from 'styled-components'
+import * as Styled from './Styles'
 
 import { SVGBackArrow, SVGNextArrow } from './SVGIcons'
 
@@ -25,28 +26,17 @@ const Wrapper = styled.div`
     gap: 1rem;
     justify-content: space-around;
 
-    margin: 4px;
-    margin-top: 10px;
+    margin-top: 8px;
 
     color: var(--theme-dark-primary);
 `
 
-const Button = styled.button`
-    border: none;
-    border-radius: 8px;
-
-    padding: 0;
-
-    text-align: center;
-`
-
-const CardNavButton = styled(Button)`
+const CardNavButton = styled(Styled.Button)`
     display: flex;
     align-items: center;
     justify-content: center;
     width: 3.5rem;
-    height: 2.5rem;
-    padding: 8px;
+    height: 2rem;
 `
 
 export default CardNav

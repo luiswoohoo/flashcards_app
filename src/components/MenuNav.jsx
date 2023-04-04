@@ -1,6 +1,7 @@
 import React from 'react'
 
 import styled from 'styled-components'
+import * as Styled from './Styles'
 
 function MenuNav({ changeMode, isStackEmpty, studyMode }) {
     return (
@@ -12,19 +13,11 @@ function MenuNav({ changeMode, isStackEmpty, studyMode }) {
     )
 }
 
-const Button = styled.button`
-    border: none;
-    border-radius: 8px;
-
-    padding: 0;
-
-    text-align: center;
-`
-
-const ChangeModeButton = styled(Button)`
+const ChangeModeButton = styled(Styled.Button)`
     width: 16rem;
-    margin: 4px auto;
-    padding: 4px;
+
+    margin-left: auto;
+    margin-right: auto;
 `
 
 export default MenuNav

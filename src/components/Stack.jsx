@@ -223,9 +223,11 @@ function Stack({ stackID, cards, setStackOfCards }) {
 const StackWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    width: 100dvw;
-    height: 100dvh;
-    max-width: 500px;
+
+    width: 100%;
+    height: 100%;
+
+    max-width: 600px;
     max-height: 1000px;
 
     font-family: 'Open Sans', sans-serif;
