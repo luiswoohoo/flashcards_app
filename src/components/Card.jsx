@@ -18,28 +18,24 @@ function Card({
     nextCard,
 }) {
     return (
-        <>
+        <Wrapper>
             {!studyMode && (
-                <Wrapper>
-                    <EditCard front={front} back={back} updateCardInfo={updateCardInfo}></EditCard>
-                </Wrapper>
+                <EditCard front={front} back={back} updateCardInfo={updateCardInfo}></EditCard>
             )}
 
             {studyMode && (
-                <Wrapper>
-                    <StudyCard
-                        flipCard={flipCard}
-                        isFlippedToFront={isFlippedToFront}
-                        wiggle={wiggle}
-                        resetWiggle={resetWiggle}
-                        prevCard={prevCard}
-                        nextCard={nextCard}
-                        front={front}
-                        back={back}
-                    ></StudyCard>
-                </Wrapper>
+                <StudyCard
+                    flipCard={flipCard}
+                    isFlippedToFront={isFlippedToFront}
+                    wiggle={wiggle}
+                    resetWiggle={resetWiggle}
+                    prevCard={prevCard}
+                    nextCard={nextCard}
+                    front={front}
+                    back={back}
+                ></StudyCard>
             )}
-        </>
+        </Wrapper>
     )
 }
 
