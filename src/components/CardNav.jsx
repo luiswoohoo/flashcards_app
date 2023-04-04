@@ -12,7 +12,7 @@ function CardNav({ prevCard, nextCard, currentCardIndex, totalCards }) {
                 <SVGBackArrow />
             </CardNavButton>
 
-            <CardNavButton>{`${currentCardIndex + 1}/${totalCards}`}</CardNavButton>
+            <div>{`${currentCardIndex + 1}/${totalCards}`}</div>
 
             <CardNavButton onClick={nextCard}>
                 <SVGNextArrow />
@@ -27,6 +27,21 @@ const Wrapper = styled.div`
     justify-content: space-around;
 
     color: var(--theme-dark-primary);
+
+    div {
+        height: 2.2rem;
+        width: 3rem;
+
+        border: none;
+        border-radius: 8px;
+
+        margin: 8px;
+        padding: 4px;
+
+        background: var(--theme-light-primary);
+
+        text-align: center;
+    }
 `
 
 const CardNavButton = styled(Styled.Button)`
