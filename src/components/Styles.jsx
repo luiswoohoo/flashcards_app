@@ -14,7 +14,6 @@ const Button = styled.button`
     border: none;
     border-radius: 8px;
 
-    margin: 8px;
     padding: 4px;
 `
 

@@ -231,6 +231,8 @@ const StackWrapper = styled.div`
     max-width: 600px;
     max-height: 1000px;
 
+    padding: 8px;
+
     font-family: 'Open Sans', sans-serif;
     color: var(--theme-dark-primary);
 `

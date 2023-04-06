@@ -41,9 +41,10 @@ function Card({
 
 // Styling for card in Edit Mode and Study Mode
 const Wrapper = styled.main`
-    width: 90%;
+    width: 100%;
     height: 100%;
-    margin: auto;
+    
+    padding: 8px 0;
 
     /* Card Flip Effect */
     perspective: 1000px;

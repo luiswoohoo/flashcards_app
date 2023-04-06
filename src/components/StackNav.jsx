@@ -16,6 +16,7 @@ function StackNav({ newCard, deleteCard, isStackEmpty }) {
 
 const StackNavButton = styled(Styled.Button)`
     width: 8rem;
+    margin-top: 8px;
 `
 
 export default StackNav

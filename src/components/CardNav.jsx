@@ -24,7 +24,7 @@ function CardNav({ prevCard, nextCard, flipCard, currentCardIndex, totalCards })
 }
 
 const CardNavButton = styled(Styled.Button)`
-    min-width: 3.5rem;
+    width: 3.5rem;
 `
 
 export default CardNav
