@@ -15,6 +15,8 @@ const Button = styled.button`
     border-radius: 8px;
 
     padding: 4px;
+
+    color: var(--theme-dark-primary);
 `
 
 export { Nav, Button }
